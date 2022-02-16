@@ -1,4 +1,4 @@
-# SQL
+# SQL Interview Questions
 
 
 ### 1. Students
