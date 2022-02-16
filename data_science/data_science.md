@@ -3,15 +3,20 @@
 ### 1. Pet Detection
 A classifier that predicts if an image contains only a cat, a dog, or a llama produced the following confusion matrix:
 
- 	True values    
-          Dog	Cat	Llama
-Predicted values    	Dog	14	2	1
-                      Cat	2	12	3
-                      Llama	5	2	19
+|          	|       | | True values   | | 
+|-----------|-------|-|---------------|-|
+|           |       | Dog |	Cat |	Llama |
+| Predicted | Dog	  |  14	|  2  |  	 1  |
+| values    | Cat	  |   2 |	12  |	   3  |
+|           | Llama	|   5 | 	2	 |   19  |
+
 What is the accuracy of the model, in percentages?
 
 **Soluition:**
-``` python
+```
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+         = (14 + 12 + 19) / (14 + 12+ 19 + 2 + 5 + 2 + 2 + 1 + 3)
+         = 0.75
 ```
 
 
@@ -25,7 +30,7 @@ Two bacteria cultures, A and B, were set up in two different dishes, each coveri
 
 
 
-### 3. Login Table (x)
+### 3. Login Table
 A company stores login data and password hashes in two different containers:
 
 - DataFrame with columns: Id, Login, Verified.
@@ -109,7 +114,7 @@ The function should train a classifier using train_input_features as input data 
 **Soluition:**
 ``` python
 import numpy as np
-from sklearn import datasets,svm
+from sklearn import datasets, svm
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -127,7 +132,7 @@ def train_and_predict(train_input_features, train_outputs, prediction_features):
                         iris species, one for each item in prediction_features
     """
     model = svm.SVC(random_state=0)
-    model.fit(train_input_features,train_outputs)
+    model.fit(train_input_features, train_outputs)
     return model.predict(prediction_features)
 
 iris = datasets.load_iris()
@@ -149,7 +154,13 @@ Version A of the website is shown to 60% of users, while version B of the websit
 If a user signs up for the company’s services, what is the probability that she/he was presented with version A of the website?
 
 **Soluition:**
-``` python
+```
+P(A) = 0.6
+P(B) = 0.4
+P(S|A) = 0.08
+P(S|B) = 0.04
+P(S) = 0.6x0.08 + 0.4x0.04 = 0.064
+P(A|S) = P(S|A) P(A) / P(S) = 0.08 x 0.6 / 0.064 = 0.75 = 75%
 ```
 
 
@@ -167,7 +178,7 @@ What is the value of the decision boundary that will maximize the accuracy of th
 
 
 
-### 8. Marketing Costs (x)
+### 8. Marketing Costs
 Implement the desired_marketing_expenditure function, which returns the required amount of money that needs to be invested in a new marketing campaign to sell the desired number of units.
 
 Use the data from previous marketing campaigns to evaluate how the number of units sold grows linearly as the amount of money invested increases.
@@ -210,7 +221,7 @@ print(desired_marketing_expenditure(
 
 
 
-### 9. Stock Prices (x)
+### 9. Stock Prices
 You are given a list of tickers and their daily closing prices for a given period.
 
 Implement the most_corr function that, when given each ticker's daily closing prices, returns the pair of tickers that are the most highly (linearly) correlated by daily percentage change.
