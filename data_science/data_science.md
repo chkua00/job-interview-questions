@@ -25,7 +25,7 @@ Two bacteria cultures, A and B, were set up in two different dishes, each coveri
 
 
 
-### 3. Login Table
+### 3. Login Table (x)
 A company stores login data and password hashes in two different containers:
 
 - DataFrame with columns: Id, Login, Verified.
@@ -167,7 +167,7 @@ What is the value of the decision boundary that will maximize the accuracy of th
 
 
 
-### 8. Marketing Costs
+### 8. Marketing Costs (x)
 Implement the desired_marketing_expenditure function, which returns the required amount of money that needs to be invested in a new marketing campaign to sell the desired number of units.
 
 Use the data from previous marketing campaigns to evaluate how the number of units sold grows linearly as the amount of money invested increases.
@@ -227,9 +227,9 @@ def most_corr(prices):
     :returns: (container of strings) A container, containing the two tickers that 
               are the most highly (linearly) correlated by daily percentage change.
     """
-    s = prices.pct_change().corr().unstack()
-    s = s[s!=1]
-    return s.idxmax()
+    corr = prices.pct_change().corr().unstack()
+    corr = corr[corr != 1]
+    return corr.idxmax()
 
 #For example, the code below should print: ('FB', 'MSFT')
 print(most_corr(pd.DataFrame.from_dict({
