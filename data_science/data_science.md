@@ -210,7 +210,7 @@ print(desired_marketing_expenditure(
 
 
 
-### 9. Stock Prices
+### 9. Stock Prices (x)
 You are given a list of tickers and their daily closing prices for a given period.
 
 Implement the most_corr function that, when given each ticker's daily closing prices, returns the pair of tickers that are the most highly (linearly) correlated by daily percentage change.
