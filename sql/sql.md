@@ -1,22 +1,27 @@
 # SQL
 
 
-#### 1. Students
+### 1. Students
 Given the following data definition, write a query that returns the number of students whose first name is John.
 
-```
+``` sql
 TABLE students
    id INTEGER PRIMARY KEY,
    firstName VARCHAR(30) NOT NULL,
    lastName VARCHAR(30) NOT NULL
 ```
 
+**Solution:**
+``` sql
+SELECT COUNT(*) FROM students WHERE firstName = 'John';
+```
+
 
 
 ***
-#### 2. Enrollment
+### 2. Enrollment
 A table containing the students enrolled in a yearly course has incorrect data in records with ids between 20 and 100 (inclusive).
-```
+``` sql
 TABLE enrollments
   id INTEGER NOT NULL PRIMARY KEY
   year INTEGER NOT NULL
@@ -24,12 +29,16 @@ TABLE enrollments
 ```
 Write a query that updates the field 'year' of every faulty record to 2015.
 
+**Solution:**
+``` sql
+UPDATE  enrollments SET year = 2015 WHERE id >= 20 AND id <= 100;
+```
 
 
 ***
-#### 3. Pets
+### 3. Pets
 Information about pets is kept in two separate tables:
-```
+``` sql
 TABLE dogs
   id INTEGER NOT NULL PRIMARY KEY,
   name VARCHAR(50) NOT NULL
@@ -40,10 +49,16 @@ TABLE cats
 ```
 Write a query that select all distinct pet names.
 
+**Solution:**
+``` sql
+SELECT name FROM dogs
+UNION
+SELECT name FROM cats;
+```
 
 
 ***
-#### 4. Social Network
+### 4. Social Network
 A new social network site has the following data tables:
 
 **users** table:
@@ -62,7 +77,7 @@ A new social network site has the following data tables:
 |  2  |  3  |
 
 Select data that will be returned by the following SQL query:
-```
+``` sql
 SELECT users.name, COUNT(*) as count FROM users
 LEFT JOIN friends
 ON users.id = friends.user1 OR users.id = friends.user2
@@ -72,11 +87,16 @@ GROUP BY users.id, users.name;
 (Select all acceptable answers.)
 
 
+**Solution:**
+``` sql
+
+```
+
 
 ***
-#### 5. Sessions
+### 5. Sessions
 App usage data are kept in the following table:
-```
+``` sql
 TABLE sessions
   id INTEGER PRIMARY KEY,
   userId INTEGER NOT NULL,
@@ -85,12 +105,17 @@ TABLE sessions
 Write a query that selects userId and average session duration for each user who has more than one session.
 
 
+**Solution:**
+``` sql
+SELECT userId, AVG(duration) FROM sessions GROUP BY userId HAVING COUNT(userId) > 1;
+```
+
 
 ***
-#### 6. Web Shop
+### 6. Web Shop
 Each item in a web shop belongs to a seller. To ensure service quality, each seller has a rating.
 The data are kept in the following two tables:
-```
+``` sql
 TABLE sellers
   id INTEGER PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
@@ -105,13 +130,20 @@ TABLE items
 Write a query that selects the item name and the name of its seller for each item that belongs to a seller with a rating greater than 4. The query should return the name of the item as the first column and name of the seller as the second column.
 
 
+**Solution:**
+``` sql
+SELECT items.name, sellers.name FROM items
+JOIN sellers ON items.sellerId = sellers.id
+WHERE sellers.rating > 4;
+```
+
 
 ***
-#### 7. Workers
+### 7. Workers
 The following data definition defines an organization's employee hierarchy.
 
 An employee is a manager if any other employee has their managerId set to this employee's id. That means John is a manager if at least one other employee has their managerId set to John's id.
-```
+``` sql
 TABLE employees
   id INTEGER NOT NULL PRIMARY KEY
   managerId INTEGER
@@ -121,11 +153,19 @@ TABLE employees
 Write a query that selects only the names of employees who are not managers.
 
 
+**Solution:**
+``` sql
+SELECT name FROM employees
+WHERE id NOT IN (
+    SELECT e1.id FROM employees AS e1 JOIN employees AS e2 ON e1.id = e2.managerId
+);
+```
+
 
 ***
-#### 8. Users And Roles
+### 8. Users And Roles
 The following two tables are used to define users and their respective roles:
-```
+``` sql
 TABLE users
   id INTEGER NOT NULL PRIMARY KEY,
   userName VARCHAR(50) NOT NULL
@@ -143,11 +183,22 @@ Modify the provided SQL create table statement so that:
 - A user can only have a specific role once.
 
 
+**Solution:**
+``` sql
+CREATE TABLE users_roles (
+  userId INTEGER not null,
+  roleId INTEGER not null,
+  foreign key (userId) references users(id),
+  foreign key (roleId) references roles(id),
+  unique (userId, roleId)
+);
+```
+
 
 ***
-#### 9. Regional Sales Comparison
+### 9. Regional Sales Comparison
 An insurance company maintains records of sales made by its employees. Each employee is assigned to a state. States are grouped under regions. The following tables contain the data:
-```
+``` sql
 TABLE regions
   id INTEGER PRIMARY KEY
   name VARCHAR(50) NOT NULL
@@ -181,6 +232,6 @@ Write a query that returns:
 Employees can have multiple sales. A region with no sales should be also returned. Use 0 for average sales per employee for such a region when calculating the 2nd and the 3rd column.
 
 
-
-
-
+**Solution:**
+``` sql
+```
