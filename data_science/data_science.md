@@ -14,9 +14,9 @@ What is the accuracy of the model, in percentages?
 
 **Soluition:**
 ```
-Accuracy = (TP + TN) / (TP + TN + FP + FN)
-         = (14 + 12 + 19) / (14 + 12+ 19 + 2 + 5 + 2 + 2 + 1 + 3)
-         = 0.75
+Accuracy = Total_Correct_Predictions / Total_Predictions_Made x 100
+         = (14 + 12 + 19) / (14 + 12 + 19 + 2 + 5 + 2 + 2 + 1 + 3) x 100
+         = 75 %
 ```
 
 
