@@ -28,16 +28,18 @@ Two bacteria cultures, A and B, were set up in two different dishes, each coveri
 ### 3. Login Table
 A company stores login data and password hashes in two different containers:
 
-DataFrame with columns: Id, Login, Verified.
-Two-dimensional NumPy array where each element is an array that contains: Id and Password.
+- DataFrame with columns: Id, Login, Verified.
+- Two-dimensional NumPy array where each element is an array that contains: Id and Password.
+
 Elements on the same row/index have the same Id.
 
-Implement the function login_table that accepts these two containers and modifies id_name_verified DataFrame in-place, so that:
+Implement the function login_table that accepts these two containers and **modifies id_name_verified DataFrame in-place**, so that:
 
-The Verified column should be removed.
-The password from NumPy array should be added as the last column with the name "Password" to DataFrame.
+- The Verified column should be removed.
+- The password from NumPy array should be added as the last column with the name "Password" to DataFrame.
+
 For example, the following code snippet:
-```
+``` python
 id_name_verified = pd.DataFrame([[1, "JohnDoe", True], [2, "AnnFranklin", False]], columns=["Id", "Login", "Verified"])
 id_password = np.array([[1, 987340123], [2, 187031122]], np.int32)
 login_table(id_name_verified, id_password)
