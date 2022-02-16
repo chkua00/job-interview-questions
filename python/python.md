@@ -22,7 +22,16 @@ def get_all_majors(students):
 What can be concluded from the code snippet above?
 
 **Solution:**
-``` python
+```
+(Select all acceptable answers.)
+
+[X] In the update_student function, the '(' and ')' parentheses can be removed without causing any errors.
+[X] Calling find_students_by_name(students, 'in') returns a list of 2 tuples.
+[ ] The add_new_student function can be rewritten as seen below and still maintain identical functionality:
+students[len(students)] = (name, major)
+[ ] Calling get_all_majors(students) returns a list of 3 tuples.
+[X] The add_new_student function adds a new student in the last place in the list.
+[ ] The name of the first student in the array can be set to the new_name variable, like students[0][0] = new_name
 ```
 
 
@@ -108,6 +117,17 @@ For example, find_roots(2, 10, 8) should return (-1, -4) or (-4, -1) as the root
 
 **Solution:**
 ``` python
+import math
+
+def find_roots(a, b, c):
+    first = (-1*b) + math.sqrt(math.pow(b, 2) - (4*a*c))
+    first = first / (2*a)
+    second = (-1*b) - math.sqrt(math.pow(b, 2) - (4*a*c))
+    second = second / (2*a)
+    roots_tuple = (first,second)
+    return roots_tuple
+
+print(find_roots(2, 10, 8))
 ```
 
 
@@ -247,7 +267,6 @@ def pipeline(*funcs):
         for f in funcs:
             arg = f(arg)
         return arg
-
     return helper
 
 fun = pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)
@@ -293,7 +312,6 @@ class LeagueTable:
     def player_rank(self, rank):
         ranks = [(-counter['score'], counter['games_played'], i, name)
                  for i, (name, counter) in enumerate(self.standings.items())]
-
         return sorted(ranks)[rank-1][3]
 
 table = LeagueTable(['Mike', 'Chris', 'Arnold'])
@@ -335,7 +353,7 @@ Implement a TrainComposition that models this problem.
 ```
 
 
-### 13. Route Planner
+### 13. Route Planner (75%)
 As a part of the route planner, the route_exists method is used as a quick filter if the destination is reachable, before using more computationally intensive procedures for finding the optimal route.
 
 The roads on the map are rasterized and produce a matrix of boolean values - True if the road is present or False if it is not. The roads in the matrix are connected only if the road is immediately left, right, below or above it.
@@ -356,5 +374,51 @@ route_exists(0, 0, 2, 2, map_matrix)
 
 **Solution:**
 ``` python
+def find_path(start, end, graph, path=[]):
+    path = path + [start]
+    if start == end:
+        return path
+    if not start in graph:
+        return None
+    for node in graph[start]:
+        if node not in path:
+            newpath = find_path(node, end, graph, path)
+            if newpath:
+                return newpath
+    return None
+
+def create_map(map_matrix):
+    mapping = {}
+    for i in range(len(map_matrix)):
+        for j, value in enumerate(map_matrix[i]):
+            mapping[(i, j)] = map_matrix[i][j]
+    return mapping
+
+def create_graph(map_matrix):
+    mapping = create_map(map_matrix)
+    graph = {}
+    for x in range(len(map_matrix)):
+        for y in range(len(map_matrix[x])):
+            connected = []
+            for tpl in [(x - 1, y), (x, y - 1), (x + 1, y), (x, y + 1)]:
+                if mapping.get(tpl):
+                    connected.append(tpl)
+            graph[(x, y)] = connected
+    return graph
+
+def route_exists(from_row, from_column, to_row, to_column, map_matrix):
+    graph = create_graph(map_matrix)
+    path = find_path((from_row, from_column), (to_row, to_column), graph)
+    if path is not None:
+        return True
+
+if __name__ == '__main__':
+    map_matrix = [
+        [True, False, False],
+        [True, True, False],
+        [False, True, True]
+    ];
+
+    print(route_exists(0, 0, 2, 2, map_matrix))
 ```
 
