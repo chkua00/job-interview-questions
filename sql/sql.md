@@ -31,7 +31,7 @@ Write a query that updates the field 'year' of every faulty record to 2015.
 
 **Solution:**
 ``` sql
-UPDATE  enrollments SET year = 2015 WHERE id >= 20 AND id <= 100;
+UPDATE enrollments SET year = 2015 WHERE id BETWEEN 20 AND 100;
 ```
 
 
@@ -51,9 +51,9 @@ Write a query that select all distinct pet names.
 
 **Solution:**
 ``` sql
-SELECT name FROM dogs
+SELECT DISTINCT(name) FROM dogs
 UNION
-SELECT name FROM cats;
+SELECT DISTINCT(name) FROM cats;
 ```
 
 
@@ -89,7 +89,8 @@ GROUP BY users.id, users.name;
 
 **Solution:**
 ``` sql
-
+Mary, 2
+Brenda, 1
 ```
 
 
@@ -133,7 +134,8 @@ Write a query that selects the item name and the name of its seller for each ite
 **Solution:**
 ``` sql
 SELECT items.name, sellers.name FROM items
-JOIN sellers ON items.sellerId = sellers.id
+INNER JOIN sellers
+ON items.sellerId = sellers.id
 WHERE sellers.rating > 4;
 ```
 
@@ -234,4 +236,18 @@ Employees can have multiple sales. A region with no sales should be also returne
 
 **Solution:**
 ``` sql
+WITH sales_avg AS (
+	SELECT r.name AS region, 
+    CASE WHEN SUM(IFNULL(s.amount,0)) = 0 THEN 0
+    ELSE SUM(IFNULL(s.amount,0))/COUNT(DISTINCT e.id) end AS average
+
+	FROM regions r
+	LEFT JOIN states st ON r.id = st.regionid
+	LEFT JOIN employees e ON st.id = e.stateid
+	LEFT JOIN sales s ON e.id = s.employeeid
+	GROUP BY r.id, r.name)
+ 
+SELECT region, average, (SELECT MAX(average) FROM sales_avg) - average AS difference
+FROM sales_avg
+GROUP BY 1
 ```
