@@ -12,7 +12,7 @@ A classifier that predicts if an image contains only a cat, a dog, or a llama pr
 
 What is the accuracy of the model, in percentages?
 
-**Soluition:**
+**Solution:**
 ```
 Accuracy = Total_Correct_Predictions / Total_Predictions_Made x 100
          = (14 + 12 + 19) / (14 + 12 + 19 + 2 + 5 + 2 + 2 + 1 + 3) x 100
@@ -24,7 +24,7 @@ Accuracy = Total_Correct_Predictions / Total_Predictions_Made x 100
 ### 2. Petri Dish
 Two bacteria cultures, A and B, were set up in two different dishes, each covering 50% of its dish. Over 20 days, bacteria A's percentage of coverage increased to 70% and bacteria B's percentage of coverage reduced to 40%:
 
-**Soluition:**
+**Solution:**
 ``` python
 ```
 
@@ -57,7 +57,7 @@ Should print:
 1   2  AnnFranklin  187031122
 ```
 
-**Soluition:**
+**Solution:**
 ``` python
 import pandas as pd
 import numpy as np
@@ -94,7 +94,7 @@ Fill in the missing values in the report for 2019:
 - That maximum was achieved on 2019-__-__ by __.
 - The party with the largest difference between the maximum and minimum number of votes is _______. That difference is __ votes.
 
-**Soluition:**
+**Solution:**
 ``` python
 ```
 
@@ -111,7 +111,7 @@ The train_and_predict function accepts three parameters:
 
 The function should train a classifier using train_input_features as input data and train_outputs as the expected result. After that, the function should use the trained classifier to predict labels for prediction_features and return them as an iterable (like list or numpy.ndarray). The nth position in the result should be the classification of the nth row of the prediction_features parameter.
 
-**Soluition:**
+**Solution:**
 ``` python
 import numpy as np
 from sklearn import datasets, svm
@@ -153,7 +153,7 @@ Version A of the website is shown to 60% of users, while version B of the websit
 
 If a user signs up for the company’s services, what is the probability that she/he was presented with version A of the website?
 
-**Soluition:**
+**Solution:**
 ```
 P(A) = 0.6
 P(B) = 0.4
@@ -172,7 +172,7 @@ The first column contains information if the dog is in the image or not. The sec
 
 What is the value of the decision boundary that will maximize the accuracy of the model? Values greater than or equal to the decision boundary will be treated as positive.
 
-**Soluition:**
+**Solution:**
 ``` python
 ```
 
@@ -193,7 +193,7 @@ Campaign	Marketing expenditure	Units sold
 #4	300,000	80,000
 #5	100,000	30,000
 
-**Soluition:**
+**Solution:**
 ``` python
 import numpy as np
 from sklearn import linear_model
@@ -226,7 +226,7 @@ You are given a list of tickers and their daily closing prices for a given perio
 
 Implement the most_corr function that, when given each ticker's daily closing prices, returns the pair of tickers that are the most highly (linearly) correlated by daily percentage change.
 
-**Soluition:**
+**Solution:**
 ``` python
 import pandas as pd
 import numpy as np
