@@ -37,38 +37,13 @@ For example, for dictionary {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.tx
 
 **Solution:**
 ``` python
-"""
-10 min
-
-Implement a group_by_owners function that:
-
-    Accepts a dictionary containing the file owner name for each file name.
-    Returns a dictionary containing a list of file names for each owner name, in any order.
-
-For example, for dictionary {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.txt': 'Randy'}
-the group_by_owners function should return {'Randy': ['Input.txt', 'Output.txt'], 'Stan': ['Code.py']}.
-
-
-    def group_by_owners(files):
-        return None
-
-    files = {
-        'Input.txt': 'Randy',
-        'Code.py': 'Stan',
-        'Output.txt': 'Randy'
-    }
-    print(group_by_owners(files))
-"""
-
 from collections import defaultdict
-
 
 def group_by_owners(files):
     owners = defaultdict(list)
     for file, owner in files.items():
         owners[owner].append(file)
     return owners
-
 
 files = {
     'Input.txt': 'Randy',
@@ -87,34 +62,7 @@ For example, IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"]).scoo
 
 **Solution:**
 ``` python
-"""
-10 min
-
-Implement the IceCreamMachine's scoops method so that it returns all
-combinations of one ingredient and one topping. If there are no ingredients or
-toppings, the method should return an empty list.
-
-For example,
-IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"]).scoops()
-should return
-[['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']].
-
-
-    class IceCreamMachine:
-
-        def __init__(self, ingredients, toppings):
-            self.ingredients = ingredients
-            self.toppings = toppings
-
-        def scoops(self):
-            pass
-
-    machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
-    print(machine.scoops()) #should print[['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']]
-"""
-
 from itertools import product
-
 
 class IceCreamMachine:
 
@@ -124,7 +72,6 @@ class IceCreamMachine:
 
     def scoops(self):
         return [list(p) for p in product(self.ingredients, self.toppings)]
-
 
 if __name__ == "__main__":
     machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
@@ -140,31 +87,10 @@ For example, calling unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia'
 
 **Solution:**
 ``` python
-"""
-10 min
-
-Implement the unique_names method. When passed two arrays of names, it will
-return an array containing the names that appear in either or both arrays.
-The returned array should have no duplicates.
-
-For example, calling unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia', 'Emma'])
-should return an array containing Ava, Emma, Olivia, and Sophia in any order.
-
-
-    def unique_names(names1, names2):
-        return None
-
-    names1 = ["Ava", "Emma", "Olivia"]
-    names2 = ["Olivia", "Sophia", "Emma"]
-    print(unique_names(names1, names2)) # should print Ava, Emma, Olivia, Sophia
-"""
-
 from itertools import chain
-
 
 def unique_names(names1, names2):
     return list(set(chain(names1, names2)))
-
 
 names1 = ["Ava", "Emma", "Olivia"]
 names2 = ["Olivia", "Sophia", "Emma"]
@@ -201,44 +127,9 @@ Call to contains(n2, 3) should return True since a tree with root at n2 contains
 
 **Solution:**
 ``` python
-"""
-15 min
-
-
-Binary search tree (BST) is a binary tree where the value of each node is larger
-or equal to the values in all the nodes in that node's left subtree and is
-smaller than the values in all the nodes in that node's right subtree.
-
-Write a function that, efficiently with respect to time used, checks if a given
-binary search tree contains a given value.
-
-For example, for the following tree:
-
-    n1 (Value: 1, Left: null, Right: null)
-    n2 (Value: 2, Left: n1, Right: n3)
-    n3 (Value: 3, Left: null, Right: null)
-
-Call to contains(n2, 3) should return True since a tree with root at n2 contains number 3.
-
-
-    import collections
-
-    Node = collections.namedtuple('Node', ['left', 'right', 'value'])
-
-    def contains(root, value):
-        pass
-
-    n1 = Node(value=1, left=None, right=None)
-    n3 = Node(value=3, left=None, right=None)
-    n2 = Node(value=2, left=n1, right=n3)
-
-    print(contains(n2, 3))
-"""
-
 import collections
 
 Node = collections.namedtuple('Node', ['left', 'right', 'value'])
-
 
 def contains(root, value):
     if root is None:
@@ -249,7 +140,6 @@ def contains(root, value):
         return contains(root.left, value)
     else:
         return contains(root.right, value)
-
 
 n1 = Node(value=1, left=None, right=None)
 n3 = Node(value=3, left=None, right=None)
@@ -278,50 +168,6 @@ print(first.is_repeating_playlist())
 
 **Solution:**
 ``` python
-"""
-15 min
-
-A playlist is considered a repeating playlist if any of the songs contain
-a reference to a previous song in the playlist. Otherwise, the playlist will end
-with the last song which points to None.
-
-Implement a function is_repeating_playlist that, efficiently with respect to
-time used, returns true if a playlist is repeating or false if it is not.
-
-For example, the following code prints "True" as both songs point to each other.
-
-    first = Song("Hello")
-    second = Song("Eye of the tiger")
-
-    first.next_song(second);
-    second.next_song(first);
-
-    print(first.is_repeating_playlist())
-
-
-
-
-    class Song:
-        def __init__(self, name):
-            self.name = name
-            self.next = None
-
-        def next_song(self, song):
-            self.next = song
-
-        def is_repeating_playlist(self):
-            return None
-
-    first = Song("Hello")
-    second = Song("Eye of the tiger")
-
-    first.next_song(second);
-    second.next_song(first);
-
-    print(first.is_repeating_playlist())
-"""
-
-
 class Song:
     def __init__(self, name):
         self.name = name
@@ -343,7 +189,6 @@ class Song:
                 playlist.add(song)
                 song = song.next
         return False
-
 
 first = Song("Hello")
 second = Song("Eye of the tiger")
@@ -367,32 +212,6 @@ For example, find_two_sum([3, 1, 5, 7, 5, 9], 10) should return a single tuple c
 
 **Solution:**
 ``` python
-"""
-30 min
-
-Write a function that, when passed a list and a target sum, returns, efficiently
-with respect to time used, two distinct zero-based indices of any two of the
-numbers, whose sum is equal to the target sum. If there are no two numbers,
-the function should return None.
-
-For example, find_two_sum([3, 1, 5, 7, 5, 9], 10) should return a single tuple
-containing any of the following pairs of indices:
-
-* 0 and 3 (or 3 and 0) as 3 + 7 = 10
-* 1 and 5 (or 5 and 1) as 1 + 9 = 10
-* 2 and 4 (or 4 and 2) as 5 + 5 = 10
-
-
-def find_two_sum(numbers, target_sum):
-    # :param numbers: (list of ints) The list of numbers.
-    # :param target_sum: (int) The required target sum.
-    # :returns: (a tuple of 2 ints) The indices of the two elements whose sum is equal to target_sum
-    return None
-
-print(find_two_sum([3, 1, 5, 7, 5, 9], 10))
-"""
-
-
 def find_two_sum(numbers, target_sum):
     """
     :param numbers: (list of ints) The list of numbers.
@@ -406,7 +225,6 @@ def find_two_sum(numbers, target_sum):
             return i, taken[diff]
         taken[num] = i
     return None
-
 
 print(find_two_sum([3, 1, 5, 7, 5, 9], 10))
 ```
@@ -424,33 +242,6 @@ For example, pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2) then ca
 
 **Solution:**
 ``` python
-"""
-10 min
-
-As part of a data processing pipeline, complete the implementation of
-the pipeline method:
-
-* The method should accept a variable number of functions, and it should return
-  a new function that accepts one parameter arg.
-* The returned function should call the first function in the pipeline with
-  the parameter arg, and call the second function with the result of the first function.
-* The returned function should continue calling each function in the pipeline
-  in order, following the same pattern, and return the value from the last function.
-
-For example, pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2) then
-calling the returned function with 3 should return 5.0.
-
-
-    def pipeline(*funcs):
-        def helper(arg):
-            pass
-        return helper
-
-    fun = pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)
-    print(fun(3)) #should print 5.0
-"""
-
-
 def pipeline(*funcs):
     def helper(arg):
         for f in funcs:
@@ -458,7 +249,6 @@ def pipeline(*funcs):
         return arg
 
     return helper
-
 
 fun = pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)
 print(fun(3))  # should print 5.0
@@ -489,61 +279,8 @@ All players have the same score. However, Arnold and Chris have played fewer gam
 
 **Solution:**
 ``` python
-"""
-20 min
-
-
-The LeagueTable class tracks the score of each player in a league. After each
-game, the player records their score with the record_result function.
-
-The player's rank in the league is calculated using the following logic:
-
-* The player with the highest score is ranked first (rank 1). The player with the lowest score is ranked last.
-* If two players are tied on score, then the player who has played the fewest games is ranked higher.
-* If two players are tied on score and number of games played,
-  then the player who was first in the list of players is ranked higher.
-
-Implement the player_rank function that returns the player at the given rank.
-
-For example:
-
-table = LeagueTable(['Mike', 'Chris', 'Arnold'])
-table.record_result('Mike', 2)
-table.record_result('Mike', 3)
-table.record_result('Arnold', 5)
-table.record_result('Chris', 5)
-print(table.player_rank(1))
-
-All players have the same score. However, Arnold and Chris have played fewer
-games than Mike, and as Chris is before Arnold in the list of players, he is
-ranked first. Therefore, the code above should display "Chris".
-
-
-    from collections import Counter
-    from collections import OrderedDict
-
-    class LeagueTable:
-        def __init__(self, players):
-            self.standings = OrderedDict([(player, Counter()) for player in players])
-
-        def record_result(self, player, score):
-            self.standings[player]['games_played'] += 1
-            self.standings[player]['score'] += score
-
-        def player_rank(self, rank):
-            return None
-
-    table = LeagueTable(['Mike', 'Chris', 'Arnold'])
-    table.record_result('Mike', 2)
-    table.record_result('Mike', 3)
-    table.record_result('Arnold', 5)
-    table.record_result('Chris', 5)
-    print(table.player_rank(1))
-"""
-
 from collections import Counter
 from collections import OrderedDict
-
 
 class LeagueTable:
     def __init__(self, players):
@@ -558,7 +295,6 @@ class LeagueTable:
                  for i, (name, counter) in enumerate(self.standings.items())]
 
         return sorted(ranks)[rank-1][3]
-
 
 table = LeagueTable(['Mike', 'Chris', 'Arnold'])
 table.record_result('Mike', 2)
@@ -576,21 +312,10 @@ For example, count_numbers([1, 3, 5, 7], 4) should return 2 because there are tw
 
 **Solution:**
 ``` python
-"""
-Implement function count_numbers that accepts a sorted list of unique integers and, 
-efficiently with respect to time used, counts the number of list elements 
-that are less than the parameter less_than.
-
-For example, count_numbers([1, 3, 5, 7], 4) should return 2 
-because there are two list elements less than 4.
-"""
-
 from bisect import bisect_left
-
 
 def count_numbers(sorted_list, less_than):
     return bisect_left(sorted_list, less_than)
-
 
 if __name__ == "__main__":
     sorted_list = [1, 3, 4, 5, 7]
