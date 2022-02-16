@@ -64,10 +64,7 @@ def login_table(id_name_verified, id_password):
               It should not return anything.
     """ 
     id_name_verified.drop(['Verified'],axis=1,inplace=True)
-    for row in id_name_verified.itertuples(index=True):
-        id_name_verified.at[row.Index,'Password'] = id_password[row.Index,1]
-    
-    pass
+    id_name_verified['Password'] = id_name_verified['Id'].map(dict(id_password))
 
 id_name_verified = pd.DataFrame([[1, "JohnDoe", True], [2, "AnnFranklin", False]], columns=["Id", "Login", "Verified"])
 id_password = np.array([[1, 987340123], [2, 187031122]], np.int32)
