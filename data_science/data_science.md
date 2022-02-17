@@ -96,8 +96,14 @@ Fill in the missing values in the report for 2019:
 - The party with the largest difference between the maximum and minimum number of votes is _______. That difference is __ votes.
 
 **Solution:**
-``` python
-```
+- The arithmetic mean of votes for the Workers' Party is: 28.7 (rounded to one decimal place)
+- The median of votes for the Workers' party is: 29 (rounded to closest integer)
+- The standard deviation of votes for the Workers' party is: 3.8 (rounded to one decimal place)
+- The difference between the largest and the smallest number of votes for the Workers' party for March is: 9
+- The largest number of votes that any party received on any day is: 37 votes.
+- That maximum was achieved on 2019-12-19 by Civic Party.
+- The party with the largest difference between the maximum and minimum number of votes is Alliance Party. That difference is 34 votes.
+(refer to election_poll.ipynb)
 
 
 
