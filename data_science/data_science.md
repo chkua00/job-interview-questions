@@ -174,7 +174,9 @@ The first column contains information if the dog is in the image or not. The sec
 What is the value of the decision boundary that will maximize the accuracy of the model? Values greater than or equal to the decision boundary will be treated as positive.
 
 **Solution:**
-``` python
+```
+51
+(refer to dog_classification.ipynb)
 ```
 
 
