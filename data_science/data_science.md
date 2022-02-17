@@ -16,6 +16,7 @@ What is the accuracy of the model, in percentages?
 ```
 Accuracy = Total_Correct_Predictions / Total_Predictions_Made x 100
          = (14 + 12 + 19) / (14 + 12 + 19 + 2 + 5 + 2 + 2 + 1 + 3) x 100
+         = 0.75
          = 75 %
 ```
 
@@ -101,15 +102,15 @@ Fill in the missing values in the report for 2019:
 
 
 ### 5. Iris Classifier
-As a part of an application for iris enthusiasts, implement the train_and_predict function which should be able to classify three types of irises based on four features.
+As a part of an application for iris enthusiasts, implement the *train_and_predict* function which should be able to classify three types of irises based on four features.
 
-The train_and_predict function accepts three parameters:
+The *train_and_predict* function accepts three parameters:
 
-- train_input_features - a two-dimensional NumPy array where each element is an array that contains: sepal length, sepal width, petal length, and petal width.
-- train_outputs - a one-dimensional NumPy array where each element is a number representing the species of iris which is described in the same row of train_input_features. 0 represents Iris setosa, 1 represents Iris versicolor, and 2 represents Iris virginica.
-- prediction_features - two-dimensional NumPy array where each element is an array that contains: sepal length, sepal width, petal length, and petal width.
+- *train_input_features* - a two-dimensional NumPy array where each element is an array that contains: sepal length, sepal width, petal length, and petal width.
+- *train_outputs* - a one-dimensional NumPy array where each element is a number representing the species of iris which is described in the same row of *train_input_features*. 0 represents Iris setosa, 1 represents Iris versicolor, and 2 represents Iris virginica.
+- *prediction_features* - two-dimensional NumPy array where each element is an array that contains: sepal length, sepal width, petal length, and petal width.
 
-The function should train a classifier using train_input_features as input data and train_outputs as the expected result. After that, the function should use the trained classifier to predict labels for prediction_features and return them as an iterable (like list or numpy.ndarray). The nth position in the result should be the classification of the nth row of the prediction_features parameter.
+The function should train a classifier using *train_input_features* as input data and *train_outputs* as the expected result. After that, the function should use the trained classifier to predict labels for *prediction_features* and return them as an iterable (like list or numpy.ndarray). The nth position in the result should be the classification of the nth row of the *prediction_features* parameter.
 
 **Solution:**
 ``` python
@@ -179,19 +180,20 @@ What is the value of the decision boundary that will maximize the accuracy of th
 
 
 ### 8. Marketing Costs
-Implement the desired_marketing_expenditure function, which returns the required amount of money that needs to be invested in a new marketing campaign to sell the desired number of units.
+Implement the *desired_marketing_expenditure* function, which returns the required amount of money that needs to be invested in a new marketing campaign to sell the desired number of units.
 
-Use the data from previous marketing campaigns to evaluate how the number of units sold grows linearly as the amount of money invested increases.
+Use the data from previous marketing campaigns to evaluate how the number of units sold grows **linearly** as the amount of money invested increases.
 
 For example, for the desired number of 60,000 units sold and previous campaign data from the table below, the function should return the float 250,000.
 
 Previous campaigns
-Campaign	Marketing expenditure	Units sold
-#1	300,000	60,000
-#2	200,000	50,000
-#3	400,000	90,000
-#4	300,000	80,000
-#5	100,000	30,000
+| **Campaign** | **Marketing expenditure** | **Units sold** |
+|--------------|---------------------------|----------------|
+| #1           | 300,000                   | 60,000         |
+| #2           | 200,000                   | 50,000         |
+| #3           | 400,000                   | 90,000         |
+| #4           | 300,000                   | 80,000         |
+| #5           | 100,000                   | 30,000         |
 
 **Solution:**
 ``` python
@@ -224,7 +226,7 @@ print(desired_marketing_expenditure(
 ### 9. Stock Prices
 You are given a list of tickers and their daily closing prices for a given period.
 
-Implement the most_corr function that, when given each ticker's daily closing prices, returns the pair of tickers that are the most highly (linearly) correlated by daily percentage change.
+Implement the *most_corr* function that, when given each ticker's daily closing prices, returns the pair of tickers that are the most highly (linearly) correlated by **daily percentage change**.
 
 **Solution:**
 ``` python
