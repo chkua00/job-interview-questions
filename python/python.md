@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
 
 ### 4. Merge Names
-Implement the unique_names method. When passed two lists of names, it will return a list containing the names that appear in either or both lists. The returned list should have no duplicates.
+Implement the unique_names method. When passed two lists of names, it will return a list containing the names that appear in **either or both** lists. The returned list should have no duplicates.
 
 For example, calling unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia', 'Emma']) should return a list containing Ava, Emma, Olivia, and Sophia in any order.
 
@@ -109,22 +109,20 @@ print(unique_names(names1, names2))     # should print Ava, Emma, Olivia, Sophia
 
 
 ### 5. Quadratic Equation
-Implement the function find_roots to find the roots of the quadratic equation: ax2 + bx + c = 0. The function should return a tuple containing roots in any order. If the equation has only one solution, the function should return that solution as both elements of the tuple. The equation will always have at least one solution.
+Implement the function find_roots to find the roots of the quadratic equation: ax^2 + bx + c = 0. The function should return a tuple containing roots in any order. If the equation has only one solution, the function should return that solution as both elements of the tuple. The equation will always have at least one solution.
 
 The roots of the quadratic equation can be found with the following formula: A quadratic equation.
 
-For example, find_roots(2, 10, 8) should return (-1, -4) or (-4, -1) as the roots of the equation 2x2 + 10x + 8 = 0 are -1 and -4.
+For example, *find_roots(2, 10, 8)* should return *(-1, -4)* or *(-4, -1)* as the roots of the equation 2x^2 + 10x + 8 = 0 are -1 and -4.
 
 **Solution:**
 ``` python
 import math
 
 def find_roots(a, b, c):
-    first = (-1*b) + math.sqrt(math.pow(b, 2) - (4*a*c))
-    first = first / (2*a)
-    second = (-1*b) - math.sqrt(math.pow(b, 2) - (4*a*c))
-    second = second / (2*a)
-    roots_tuple = (first,second)
+    first = (-b + math.sqrt(math.pow(b, 2) - (4*a*c))) / (2*a)
+    second = (-b - math.sqrt(math.pow(b, 2) - (4*a*c))) / (2*a)
+    roots_tuple = (first, second)
     return roots_tuple
 
 print(find_roots(2, 10, 8))
@@ -135,7 +133,7 @@ print(find_roots(2, 10, 8))
 ### 6. Binary Search Tree
 Binary search tree (BST) is a binary tree where the value of each node is larger or equal to the values in all the nodes in that node's left subtree and is smaller than the values in all the nodes in that node's right subtree.
 
-Write a function that, efficiently with respect to time used, checks if a given binary search tree contains a given value.
+Write a function that, **efficiently** with respect to time used, checks if a given binary search tree contains a given value.
 
 For example, for the following tree:
 
@@ -143,7 +141,7 @@ For example, for the following tree:
 - n2 (Value: 2, Left: n1, Right: n3)
 - n3 (Value: 3, Left: null, Right: null)
 
-Call to contains(n2, 3) should return True since a tree with root at n2 contains number 3.
+Call to *contains(n2, 3)* should return True since a tree with root at n2 contains number 3.
 
 **Solution:**
 ``` python
@@ -173,7 +171,7 @@ print(contains(n2, 3))
 ### 7. Song
 A playlist is considered a repeating playlist if any of the songs contain a reference to a previous song in the playlist. Otherwise, the playlist will end with the last song which points to None.
 
-Implement a function is_repeating_playlist that, efficiently with respect to time used, returns true if a playlist is repeating or false if it is not.
+Implement a function is_repeating_playlist that, **efficiently** with respect to time used, returns true if a playlist is repeating or false if it is not.
 
 For example, the following code prints "True" as both songs point to each other.
 ``` python
@@ -222,9 +220,9 @@ print(first.is_repeating_playlist())
 
 
 ### 8. Two Sum
-Write a function that, when passed a list and a target sum, returns, efficiently with respect to time used, two distinct zero-based indices of any two of the numbers, whose sum is equal to the target sum. If there are no two numbers, the function should return None.
+Write a function that, when passed a list and a target sum, returns, **efficiently** with respect to time used, two distinct zero-based indices of any two of the numbers, whose sum is equal to the target sum. If there are no two numbers, the function should return None.
 
-For example, find_two_sum([3, 1, 5, 7, 5, 9], 10) should return a single tuple containing any of the following pairs of indices:
+For example, *find_two_sum([3, 1, 5, 7, 5, 9], 10)* should return a single tuple containing any of the following pairs of indices:
 
 - 0 and 3 (or 3 and 0) as 3 + 7 = 10
 - 1 and 5 (or 5 and 1) as 1 + 9 = 10
@@ -258,7 +256,7 @@ As part of a data processing pipeline, complete the implementation of the pipeli
 - The returned function should call the first function in the pipeline with the parameter arg, and call the second function with the result of the first function.
 - The returned function should continue calling each function in the pipeline in order, following the same pattern, and return the value from the last function.
 
-For example, pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2) then calling the returned function with 3 should return 5.0.
+For example, *pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)* then calling the returned function with 3 should return 5.0.
 
 **Solution:**
 ``` python
@@ -324,9 +322,9 @@ print(table.player_rank(1))
 
 
 ### 11. Sorted Search
-Implement function count_numbers that accepts a sorted list of unique integers and, efficiently with respect to time used, counts the number of list elements that are less than the parameter less_than.
+Implement function count_numbers that accepts a sorted list of unique integers and, **efficiently** with respect to time used, counts the number of list elements that are less than the parameter less_than.
 
-For example, count_numbers([1, 3, 5, 7], 4) should return 2 because there are two list elements less than 4.
+For example, *count_numbers([1, 3, 5, 7], 4)* should return 2 because there are two list elements less than 4.
 
 **Solution:**
 ``` python
@@ -342,7 +340,7 @@ if __name__ == "__main__":
 
 
 ### 12. Train Composition
-A TrainComposition is built by attaching and detaching wagons from the left and the right sides, efficiently with respect to time used.
+A TrainComposition is built by attaching and detaching wagons from the left and the right sides, **efficiently** with respect to time used.
 
 For example, if we start by attaching wagon 7 from the left followed by attaching wagon 13, again from the left, we get a composition of two wagons (13 and 7 from left to right). Now the first wagon that can be detached from the right is 7 and the first that can be detached from the left is 13.
 
